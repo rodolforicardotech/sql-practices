@@ -1,0 +1,37 @@
+Algumas perguntas e suas respostas.
+
+1 - Na tabela actor, listar todos os atores por ordem alfabetica, 
+
+SELECT actor.first_name, actor.last_name
+FROM actor actor
+ORDER BY 1, 2;
+
+COMENTÁRIO: No ORDER BY, não utilizei o nome da coluna e sim, seu referente número.
+
+2 - Listar os que começam com a letra c no primeiro nome,
+
+SELECT actor.first_name, actor.last_name
+FROM actor actor
+WHERE actor.first_name LIKE 'c%';
+
+COMENTÁRIO: Dei o ALIAS actor para o actor o que se tornou redundante. No WHERE, lembrar que do LIKE. O '%' é o coringa, então, 
+começa com a letra C e segue.
+
+3 - Ordenar na alfabetica inversa todos os atores que comecem com a letra f no preimeiro nome.
+
+SELECT actor.first_name, actor.last_name
+FROM actor actor
+WHERE actor.first_name 
+LIKE 'f%'
+ORDER BY 1 
+DESC ;
+
+COMENTÁRIO: Lembrar que o DESC do ORDER BY vem depois da coluna desejada!
+
+4 - Quantos e quais atores tem o mesmo sobrenome? 
+
+SELECT COUNT(actor.last_name), actor.last_name
+FROM actor actor
+GROUP BY actor.last_name;
+
+COMENTÁRIO: Contei os cobrenomes e também listei-os.
