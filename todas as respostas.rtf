@@ -1,0 +1,540 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf610
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red128\green0\blue0;\red0\green0\blue128;\red255\green0\blue0;
+\red0\green128\blue0;\red0\green0\blue255;}
+{\*\expandedcolortbl;;\csgenericrgb\c50196\c0\c0;\csgenericrgb\c0\c0\c50196;\csgenericrgb\c100000\c0\c0;
+\csgenericrgb\c0\c50196\c0;\csgenericrgb\c0\c0\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww17140\viewh16280\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1. Write a query in SQL to find the number of venues for EURO cup 2016. (soccer_venue)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs36 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  soccer_venue\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+2. Write a query in SQL to find the number countries participated in the EURO cup 2016. (player_mast)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs36 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (
+\f1\b \cf2 DISTINCT
+\f2\b0 \cf0  team_id)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_mast\cf4 ;\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+Com nomes\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs36 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf2 DISTINCT
+\f2\b0 \cf0 (pm.team_id), sc.country_name \
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_mast pm, Soccer_Country sc\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  pm.team_id = sc.country_id\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+3. Write a query in SQL to find the number goals scored in EURO cup 2016 within normal play schedule.(goal_details)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs36 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (
+\f1\b \cf2 DISTINCT
+\f2\b0 \cf0  ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  goal_details\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+4. Write a query in SQL to find the number of matches ended with a result. (match_mast)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (results)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_mast\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  results = \cf5 'WIN'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+5. Write a query in SQL to find the number of matches ended with draws. (match_mast)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (results)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_mast\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  results = \cf5 'DRAW'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+6. Write a query in SQL to find the date when did Football EURO cup 2016 begin.(match_mast)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  match_no 
+\f1\b \cf2 as
+\f2\b0 \cf0  N\'famero_da_Partida,  
+\f1\b \cf3 DATE_FORMAT
+\f2\b0 \cf0 (play_date, \cf5 '%d/%m/%Y'\cf0 ) 
+\f1\b \cf2 as
+\f2\b0 \cf0  
+\f1\b \cf2 Data
+\f2\b0 \cf0 \
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_mast\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  match_no = \cf6 1\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+7. Write a query in SQL to find the number of self-goals scored in EURO cup 2016.( goal_details)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (goal_type)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  goal_details\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  goal_type = \cf5 'O'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+8. Write a query in SQL to count the number of matches ended with a results in group stage. (match_mast)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (play_stage) 
+\f1\b \cf2 as
+\f2\b0 \cf0  N\'fameros_de_Partida\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_mast\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_stage = \cf5 'G'\cf0  
+\f1\b \cf2 AND
+\f2\b0 \cf0  results=\cf5 'WIN'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+9. Write a query in SQL to find the number of matches got a result by penalty shootout. (penalty_shootout)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (
+\f1\b \cf2 DISTINCT
+\f2\b0 \cf0  match_no) 
+\f1\b \cf2 as
+\f2\b0 \cf0  Partidas_com_Disp_Pen\'e2lti\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  penalty_shootout\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+10. Write a query in SQL to find the number of matches were decided on penalties in the Round of 16. (match_mast)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (play_stage)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_mast\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_stage = \cf5 'R'\cf0  
+\f1\b \cf2 AND
+\f2\b0 \cf0  decided_by = \cf5 'P'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+11. Write a query in SQL to find the number of goal scored in every match within normal play schedule. (goal_details)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (goal_schedule)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  goal_details gd\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  goal_schedule = \cf5 'NT'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+12. Write a query in SQL to find the match no, date of play, and goal scored for that match in which no stoppage time have been added in 1st half of play. (match_mast)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  play_date , match_no , goal_score , stop1_sec \
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_mast\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  stop1_sec = \cf6 0\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+13. Write a query in SQL to find the number of matches ending with a goalless draw in group stage of play. (match_details)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_details\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_stage = \cf5 'G'\cf0  
+\f1\b \cf2 AND
+\f2\b0 \cf0  goal_score = \cf6 0\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+14. Write a query in SQL to find the number of matches ending with only one goal win except those matches which was decided by penalty shootout.(match_details)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  ID, goal_score, match_no, penalty_score\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_details\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  goal_score = \cf6 1\cf0  
+\f1\b \cf2 AND
+\f2\b0 \cf0  win_lose = \cf5 'W'\cf0  
+\f1\b \cf2 AND
+\f2\b0 \cf0  penalty_score = \cf5 ''\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+15. Write a query in SQL to find the total number of players replaced in the tournament. (player_in_out)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_in_out pio \cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+16. Write a query in SQL to find the total number of palyers replaced within normal time of play.(player_in_out)\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_in_out\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_schedule = \cf5 'NT'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+17. Write a query in SQL to find the number of players replaced in the stoppage time. (player_in_out)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_in_out\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_schedule = \cf5 'ST'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+18. Write a query in SQL to find the total number of players replaced in the first half of play. (player_in_out)\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_in_out pio\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_half = \cf6 1\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+19. Write a query in SQL to find the total number of goalless draws have there in the entire tournament. (match_details)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  match_details\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  goal_score = \cf6 0\cf0  
+\f1\b \cf2 and
+\f2\b0 \cf0  win_lose = \cf5 'D'\cf4 ;\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 20. Write a query in SQL to fine the total number of players replaced in the extra time of play. (player_in_out)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_in_out\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_schedule = \cf5 'ET'\cf4 ;\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+\
+\
+21. Write a query in SQL to compute a list to show the number of substitute happened in various stage of play for the entire tournament. (player_in_out)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  *\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_in_out\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+22. Write a query in SQL to find the number of shots taken in penalty shootout matches.(penalty_shootout)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  penalty_shootout;
+\f0\fs24 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+23. Write a query in SQL to find the number of shots socred goal in penalty shootout matches. (penalty_shootout)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  penalty_shootout\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  score_goal = \cf5 'Y'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+24. Write a query in SQL to find the number of shots missed or saved in penalty shootout matches. (penalty_shootout)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  penalty_shootout\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  score_goal = \cf5 'N'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+25. Write a query in SQL to prepare a list of players with number of shots they taken in penalty shootout matches. \
+(Sample table: soccer_country, penalty_shootout, player_mast)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf2 DISTINCT
+\f2\b0 \cf0  ps.player_id, pm.player_name\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  penalty_shootout ps, player_mast pm \
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  ps.player_id = pm.player_id \cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+26. Write a query in SQL to find the number of penalty shots taken by the teams. (soccer_country, penalty_shootout)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf2 DISTINCT
+\f2\b0 \cf0  ps.player_id, pm.player_name, pm.team_id, sc.country_name \
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  penalty_shootout ps, player_mast pm, Soccer_Country sc \
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  ps.player_id = pm.player_id 
+\f1\b \cf2 AND
+\f2\b0 \cf0  pm.team_id = sc.country_id\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+27. Write a query in SQL to find the number of booking happened in each half of play within normal play schedule. (player_booked)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 SUM
+\f2\b0 \cf0 (play_half = \cf6 1\cf0 ) 
+\f1\b \cf2 as
+\f2\b0 \cf0  PrimeiroTempo, 
+\f1\b \cf3 SUM
+\f2\b0 \cf0 (play_half = \cf6 2\cf0 ) 
+\f1\b \cf2 as
+\f2\b0 \cf0  SegundoTempo\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_booked\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_schedule = \cf5 'NT'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+28. Write a query in SQL to find the number of booking happened in stoppage time. (player_booked)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_booked\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_schedule = \cf5 'ST'\cf4 ;
+\f0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+29. Write a query in SQL to find the number of booking happened in extra time. (player_booked)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs32 \cf2 SELECT
+\f2\b0 \cf0  
+\f1\b \cf3 COUNT
+\f2\b0 \cf0 (ID)\
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  player_booked\
+
+\f1\b \cf2 WHERE
+\f2\b0 \cf0  play_schedule = \cf5 'ET'\cf4 ;
+\f0\fs24 \cf0 \
+}
